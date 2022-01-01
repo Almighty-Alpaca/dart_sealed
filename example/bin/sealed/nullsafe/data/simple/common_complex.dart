@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'common_complex.sealed.dart';
+part 'common_complex.g.dart';
 
 @Sealed()
 abstract class _Common {

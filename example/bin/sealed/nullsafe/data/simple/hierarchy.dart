@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'hierarchy.sealed.dart';
+part 'hierarchy.g.dart';
 
 @Sealed()
 abstract class _Apple {

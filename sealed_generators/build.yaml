@@ -9,6 +9,7 @@ builders:
     target: ":sealed_generators"
     import: "package:sealed_generators/sealed_generators.dart"
     builder_factories: [ "sealedGeneratorsBuilder" ]
-    build_extensions: { ".dart": [ ".sealed.dart" ] }
+    build_extensions: { ".dart": [ ".sealed.g.dart" ] }
     auto_apply: dependents
-    build_to: source
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]

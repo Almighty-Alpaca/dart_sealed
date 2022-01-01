@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'weather.sealed.dart';
+part 'weather.g.dart';
 
 @Sealed()
 @WithEquality(Equality.identity)

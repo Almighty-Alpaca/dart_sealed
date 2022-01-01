@@ -40,10 +40,10 @@ Import `sealed_annotations`.
 import 'package:sealed_annotations/sealed_annotations.dart';
 ```
 
-Add `part` pointing to a file which you want classes be generated in. with `.sealed.dart` extension.
+Add `part` pointing to a file which you want classes be generated in. with `.g.dart` extension.
 
 ```dart
-part 'weather.sealed.dart';
+part 'weather.g.dart';
 ```
 
 Add `@Sealed` annotation, and an abstract private class as a manifest for generated code. For example:
@@ -259,7 +259,7 @@ will be nullable.
 ```dart
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'result.sealed.dart';
+part 'result.g.dart';
 
 @Sealed()
 abstract class _Result<D extends num> {
@@ -274,7 +274,7 @@ Or you can have multiple generic types and even mix them.
 ```dart
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'result.sealed.dart';
+part 'result.g.dart';
 
 @Sealed()
 abstract class _Result<D extends num, E extends Object> {
@@ -465,7 +465,7 @@ abstract class _Result<D extends num> {
 It is recommended to ignore generated files on Git. Add this to your `.gitignore` file:
 
 ```
-*.sealed.dart
+*.g.dart
 ```
 
 To exclude generated files from dart analysis, add this to your `analysis_options.yaml` file:
@@ -473,5 +473,5 @@ To exclude generated files from dart analysis, add this to your `analysis_option
 ```
 analyzer:
   exclude:
-    - lib/**/*.sealed.dart
+    - lib/**/*.g.dart
 ```

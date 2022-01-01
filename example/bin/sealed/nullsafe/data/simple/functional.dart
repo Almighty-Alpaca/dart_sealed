@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'functional.sealed.dart';
+part 'functional.g.dart';
 
 typedef Func = int Function(double x);
 

@@ -2,7 +2,7 @@ import 'result.dart';
 import 'weather.dart';
 
 void main() {
-  final a = Weather.sunny();
+  final a = Weather.sunny;
   final b = Weather.rainy(rain: 12);
   final c = Weather.windy(velocity: 1.5, angle: null);
 

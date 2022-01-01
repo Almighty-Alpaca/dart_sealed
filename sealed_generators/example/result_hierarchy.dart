@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'result_hierarchy.sealed.dart';
+part 'result_hierarchy.g.dart';
 
 @Sealed()
 abstract class _Result<D extends num> {

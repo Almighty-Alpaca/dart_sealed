@@ -19,6 +19,8 @@ part of 'weather.dart';
 abstract class Weather {
   const Weather._internal();
 
+  static const Weather sunny = WeatherSunny();
+
   const factory Weather.rainy({
     required int rain,
   }) = WeatherRainy;
@@ -27,8 +29,6 @@ abstract class Weather {
     required double velocity,
     double? angle,
   }) = WeatherWindy;
-
-  static const Weather sunny = WeatherSunny();
 
   bool get isSunny => this is WeatherSunny;
 

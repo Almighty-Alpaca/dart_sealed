@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'mixed.sealed.dart';
+part 'mixed.g.dart';
 
 @Sealed()
 abstract class _Apple {

@@ -19,7 +19,7 @@ part of 'weather.dart';
 abstract class Weather {
   const Weather._internal();
 
-  const factory Weather.sunny() = WeatherSunny;
+  static const Weather sunny = WeatherSunny();
 
   const factory Weather.rainy({
     required int rain,

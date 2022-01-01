@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'result_single_1.sealed.dart';
+part 'result_single_1.g.dart';
 
 @Sealed()
 abstract class _Result<D extends num> {

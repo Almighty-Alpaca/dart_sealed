@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'meta.sealed.dart';
+part 'meta.g.dart';
 
 @Sealed()
 @WithPrefix('Prefix')

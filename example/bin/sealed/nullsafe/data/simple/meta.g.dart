@@ -19,7 +19,7 @@ part of 'meta.dart';
 abstract class Weather {
   const Weather._internal();
 
-  const factory Weather.sunny() = PrefixSunny;
+  static const Weather sunny = PrefixSunny();
 
   const factory Weather.rainy({
     required int rain,
@@ -297,7 +297,7 @@ class VeryBadWeather extends Weather {
 abstract class ApiError {
   const ApiError._internal();
 
-  const factory ApiError.internetError() = InternetError;
+  static const ApiError internetError = InternetError();
 
   const factory ApiError.serverError({
     required int code,

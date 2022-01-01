@@ -1,6 +1,6 @@
 import 'package:sealed_annotations/sealed_annotations.dart';
 
-part 'common.sealed.dart';
+part 'common.g.dart';
 
 @Sealed()
 abstract class _ApiError {

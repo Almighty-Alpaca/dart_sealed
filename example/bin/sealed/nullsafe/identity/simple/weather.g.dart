@@ -8,16 +8,18 @@ part of 'weather.dart';
 
 /// [Weather] {
 ///
-/// ([WeatherSunny] sunny){} with distinct equality
+/// ([WeatherSunny] sunny){} with identity equality
 ///
-/// ([WeatherRainy] rainy){[int] rain} with distinct equality
+/// ([WeatherRainy] rainy){[int] rain} with identity equality
 ///
-/// ([WeatherWindy] windy){[double] velocity, [double]? angle} with distinct equality
+/// ([WeatherWindy] windy){[double] velocity, [double]? angle} with identity equality
 ///
 /// }
 @SealedManifest(_Weather)
 abstract class Weather {
   const Weather._internal();
+
+  static const Weather sunny = WeatherSunny();
 
   const factory Weather.rainy({
     required int rain,
@@ -27,8 +29,6 @@ abstract class Weather {
     required double velocity,
     double? angle,
   }) = WeatherWindy;
-
-  static const Weather sunny = WeatherSunny();
 
   bool get isSunny => this is WeatherSunny;
 
@@ -232,23 +232,17 @@ abstract class Weather {
 
 /// (([WeatherSunny] : [Weather]) sunny){}
 ///
-/// with distinct equality
+/// with identity equality
 class WeatherSunny extends Weather {
   const WeatherSunny() : super._internal();
 
   @override
   String toString() => 'Weather.sunny()';
-
-  @override
-  bool operator ==(Object other) => false;
-
-  @override
-  int get hashCode => 0;
 }
 
 /// (([WeatherRainy] : [Weather]) rainy){[int] rain}
 ///
-/// with distinct equality
+/// with identity equality
 class WeatherRainy extends Weather {
   const WeatherRainy({
     required this.rain,
@@ -258,17 +252,11 @@ class WeatherRainy extends Weather {
 
   @override
   String toString() => 'Weather.rainy(rain: $rain)';
-
-  @override
-  bool operator ==(Object other) => false;
-
-  @override
-  int get hashCode => 0;
 }
 
 /// (([WeatherWindy] : [Weather]) windy){[double] velocity, [double]? angle}
 ///
-/// with distinct equality
+/// with identity equality
 class WeatherWindy extends Weather {
   const WeatherWindy({
     required this.velocity,
@@ -280,10 +268,4 @@ class WeatherWindy extends Weather {
 
   @override
   String toString() => 'Weather.windy(velocity: $velocity, angle: $angle)';
-
-  @override
-  bool operator ==(Object other) => false;
-
-  @override
-  int get hashCode => 0;
 }
