@@ -17,6 +17,7 @@ class SealedGenerator extends GeneratorForAnnotation<Sealed> {
       SourceWriter(
         const SourceReader().read(
           element,
+          annotation,
         ),
       ).write();
 

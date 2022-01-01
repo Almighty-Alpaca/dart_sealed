@@ -10,6 +10,7 @@ class Manifest {
     required this.items,
     required this.params,
     required this.fields,
+    this.blocName,
   }) {
     check(name.isGenClassName());
     check(items.isNotEmpty);
@@ -30,6 +31,8 @@ class Manifest {
   /// items should contain all of common fields
   /// by themselves.
   final List<ManifestField> fields;
+
+  final String? blocName;
 
   @override
   String toString() => 'Manifest{name: $name, items: $items,'

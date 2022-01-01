@@ -17,7 +17,7 @@ abstract class _Basic {
 void one();
 void two(int x, double? y);
 }''');
-            final manifest = SourceReader().read(x.element);
+            final manifest = SourceReader().read(x.element, x.annotation);
             expect(
               manifest,
               Manifest(
@@ -66,7 +66,7 @@ void two(int x, double? y);
 abstract class _Basic {
 void one();
 }''');
-            final manifest = SourceReader().read(x.element);
+            final manifest = SourceReader().read(x.element, x.annotation);
             expect(
               manifest,
               Manifest(
@@ -94,7 +94,7 @@ abstract class _Basic {
 void one();
 }''');
               final reader = SourceReader();
-              final manifest = reader.read(x.element);
+              final manifest = reader.read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -121,7 +121,7 @@ abstract class _Basic {
 void one();
 }''');
               final reader = SourceReader();
-              final manifest = reader.read(x.element);
+              final manifest = reader.read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -148,7 +148,7 @@ abstract class _Basic {
 @WithEquality(Equality.identity)
 void one();
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -174,7 +174,7 @@ void one();
 abstract class _Basic {
 void one();
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -200,7 +200,7 @@ void one();
 abstract class _Basic {
 void one();
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -228,7 +228,7 @@ abstract class _Basic {
 void one();
 }''');
               final reader = SourceReader();
-              final manifest = reader.read(x.element);
+              final manifest = reader.read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -254,7 +254,7 @@ void one();
 abstract class _Basic {
 void one(@WithType('double?') x, @WithType('double') int? y);
 }''');
-            final manifest = SourceReader().read(x.element);
+            final manifest = SourceReader().read(x.element, x.annotation);
             expect(
               manifest,
               Manifest(
@@ -301,7 +301,7 @@ void one(_Basic2 x);
 abstract class _Basic2 {
 void one();
 }''');
-            final manifest = SourceReader().read(x.element);
+            final manifest = SourceReader().read(x.element, x.annotation);
             expect(
               manifest,
               Manifest(
@@ -338,7 +338,7 @@ int get x;
 
 void one(double y);
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -393,7 +393,7 @@ void one();
 
 void two(int x);
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -453,7 +453,7 @@ final int x = 0;
 
 void one();
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -499,7 +499,7 @@ dynamic get x;
 
 void one();
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -544,7 +544,7 @@ num get x;
 
 void one(@WithType('int') dynamic x);
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -590,7 +590,7 @@ final dynamic x = null;
 
 void one();
 }''');
-              final manifest = SourceReader().read(x.element);
+              final manifest = SourceReader().read(x.element, x.annotation);
               expect(
                 manifest,
                 Manifest(
@@ -637,7 +637,7 @@ void one(T x);
 void two(E y);
 void three(T? z);
 }''');
-            final manifest = SourceReader().read(x.element);
+            final manifest = SourceReader().read(x.element, x.annotation);
             expect(
               manifest,
               Manifest(
@@ -716,7 +716,7 @@ void three(T? z);
 abstract class _Basic<T> {
 void one();
 }''');
-            final manifest = SourceReader().read(x.element);
+            final manifest = SourceReader().read(x.element, x.annotation);
             expect(
               manifest,
               Manifest(
@@ -755,7 +755,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -768,7 +768,7 @@ void One();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -781,7 +781,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -794,7 +794,7 @@ void one(int X);
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -809,7 +809,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -822,7 +822,7 @@ a, b, c,
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -834,7 +834,7 @@ void hello() {}
 ''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -847,7 +847,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -860,7 +860,7 @@ void _one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -873,7 +873,7 @@ void one(int _x);
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -888,7 +888,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -903,7 +903,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -918,7 +918,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -931,7 +931,7 @@ void one();
 }''');
         final reader = SourceReader();
         expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             isNot(
               throwsA(anything),
             ));
@@ -944,7 +944,7 @@ abstract class _Basic {
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -957,7 +957,7 @@ void one<T>();
 }''');
         final reader = SourceReader();
         expect(
-          () => reader.read(x.element),
+          () => reader.read(x.element, x.annotation),
           throwsSealedErrorNotInternal(),
         );
       });
@@ -971,7 +971,7 @@ void one(@WithType("Hello ") x);
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -987,7 +987,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1001,7 +1001,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1015,7 +1015,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1029,7 +1029,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1043,7 +1043,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1057,7 +1057,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1071,7 +1071,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });
@@ -1085,7 +1085,7 @@ void one();
 }''');
           final reader = SourceReader();
           expect(
-            () => reader.read(x.element),
+            () => reader.read(x.element, x.annotation),
             throwsSealedErrorNotInternal(),
           );
         });

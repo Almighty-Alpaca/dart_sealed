@@ -2,22 +2,25 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:sealed_generators/src/manifest/annotation_utils.dart';
 import 'package:sealed_generators/src/manifest/manifest_reader.dart';
 import 'package:sealed_writer/sealed_writer.dart';
+import 'package:source_gen/src/constants/reader.dart';
 
 /// provides options and details not general to the manifest to reader
 class ManifestReaderBuilder {
   const ManifestReaderBuilder();
 
   /// build manifest reader
-  ManifestReader build(Element element) {
+  ManifestReader build(Element element, ConstantReader annotation) {
     final topClass = _extractClassElement(element);
     final topName = _extractTopName(topClass);
     final topEquality = _extractTopEquality(element);
     final topPrefix = _extractTopPrefix(element, topName);
+    final blocName = _extractBlocName(annotation);
     return ManifestReader(
       topName: topName,
       topEquality: topEquality,
       topPrefix: topPrefix,
       topClass: topClass,
+      blocName: blocName,
     );
   }
 
@@ -64,5 +67,9 @@ class ManifestReaderBuilder {
       () => "class '$name' name should start with upper case letter",
     );
     return str;
+  }
+
+  String? _extractBlocName(ConstantReader annotation) {
+    return annotation.peek('bloc')?.typeValue.element?.name;
   }
 }

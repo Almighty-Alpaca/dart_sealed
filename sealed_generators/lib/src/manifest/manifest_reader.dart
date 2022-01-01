@@ -13,6 +13,7 @@ class ManifestReader {
     required this.topEquality,
     required this.topPrefix,
     required this.topClass,
+    required this.blocName,
   }) {
     check(topName.isGenClassName());
     check(topPrefix.isEmpty || topPrefix.isGenClassName());
@@ -30,6 +31,8 @@ class ManifestReader {
   /// checked class element for manifest
   final ClassElement topClass;
 
+  final String? blocName;
+
   /// read manifest
   Manifest read() {
     final params = _extractParams();
@@ -42,6 +45,7 @@ class ManifestReader {
       params: params,
       items: correctedItems,
       fields: commonFields,
+      blocName: blocName,
     );
   }
 

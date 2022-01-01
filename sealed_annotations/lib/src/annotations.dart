@@ -50,10 +50,12 @@ import 'package:meta/meta_meta.dart';
 /// ```
 @Target({TargetKind.classType})
 class Sealed {
-  const Sealed();
+  const Sealed({this.bloc});
+
+  final Type? bloc;
 
   @override
-  String toString() => 'Sealed()';
+  String toString() => 'Sealed(${bloc == null ? '' : 'bloc=$bloc'})';
 }
 
 /// used to target @[Sealed] [manifest] class which

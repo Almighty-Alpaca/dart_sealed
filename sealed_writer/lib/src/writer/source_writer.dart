@@ -1,6 +1,7 @@
 import 'package:sealed_writer/src/manifest/manifest.dart';
 import 'package:sealed_writer/src/utils/string_utils.dart';
 import 'package:sealed_writer/src/writer/base/base_writer.dart';
+import 'package:sealed_writer/src/writer/bloc/bloc_writer.dart';
 import 'package:sealed_writer/src/writer/sub/sub_writer.dart';
 import 'package:sealed_writer/src/writer/top/top_writer.dart';
 
@@ -18,15 +19,19 @@ class SourceWriter extends BaseWriter {
           referToManifest: referToManifest,
         ),
         subWriter = SubWriter(manifest),
+        blocWriter = BlocWriter(manifest),
         super(manifest);
 
   final TopWriter topWriter;
 
   final SubWriter subWriter;
 
+  final BlocWriter blocWriter;
+
   Iterable<String> classes() => [
         topWriter.topClass(),
         ...subWriter.subClasses(),
+        ...blocWriter.blocClasses(),
       ];
 
   String write() => classes().joinMethods();
