@@ -1,3 +1,5 @@
+import 'package:analyzer/dart/analysis/results.dart';
+import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/nullability_suffix.dart';
 import 'package:analyzer/dart/element/type.dart';
@@ -98,6 +100,7 @@ class ManifestReader {
     return ManifestField(
       name: name,
       type: _readOverriddenTypeOrNull(arg) ?? _extractManifestType(arg.type),
+      defaultValueCode: arg.defaultValueCode,
     );
   }
 
@@ -182,22 +185,30 @@ class ManifestReader {
       extractWithTypeOrNull(element)?.readType();
 
   /// extract common fields from getters
-  List<ManifestField> _extractCommonFields() => topClass.accessors
-      .where(_filterGetterAccessors)
-      .map(_extractCommonField)
-      .toList();
-
-  /// filter getter accessors
-  static bool _filterGetterAccessors(PropertyAccessorElement accessor) =>
-      accessor.isGetter;
+  List<ManifestField> _extractCommonFields() =>
+      topClass.fields.map(_extractCommonField).toList();
 
   /// extract common field from a getter
-  ManifestField _extractCommonField(PropertyAccessorElement accessor) {
-    final name = _extractCommonFieldName(accessor);
+  ManifestField _extractCommonField(FieldElement field) {
+    final name = _extractCommonFieldName(field);
+    final library = field.session?.getParsedLibraryByElement(field.library)
+        as ParsedLibraryResult;
+    final node = library.getElementDeclaration(field)?.node;
+
+    String? defaultValueCode;
+
+    if (node is VariableDeclaration) {
+      var initializer = node.initializer;
+      if (initializer != null) {
+        defaultValueCode = initializer.toString();
+      }
+    }
+
     return ManifestField(
       name: name,
-      type: _readOverriddenCommonFieldTypeOrNull(accessor) ??
-          _extractManifestType(accessor.type.returnType),
+      type: _readOverriddenCommonFieldTypeOrNull(field) ??
+          _extractManifestType(field.type),
+      defaultValueCode: defaultValueCode,
     );
   }
 
@@ -205,15 +216,15 @@ class ManifestReader {
   ///
   /// getter may be synthesized from a field
   ManifestType? _readOverriddenCommonFieldTypeOrNull(
-    PropertyAccessorElement accessor,
+    FieldElement field,
   ) =>
-      accessor.isSynthetic
-          ? _readOverriddenTypeOrNull(accessor.nonSynthetic)
-          : _readOverriddenTypeOrNull(accessor);
+      field.isSynthetic
+          ? _readOverriddenTypeOrNull(field.nonSynthetic)
+          : _readOverriddenTypeOrNull(field);
 
   /// extract field name from method argument
-  String _extractCommonFieldName(PropertyAccessorElement accessor) {
-    final name = accessor.name;
+  String _extractCommonFieldName(FieldElement field) {
+    final name = field.name;
     require(
       name.isGenTypeName(),
       () => "getter/field name '$name' should be valid type name",

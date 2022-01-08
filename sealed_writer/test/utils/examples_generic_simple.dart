@@ -18,6 +18,7 @@ Manifest manifest2([ManifestEquality equality = ManifestEquality.data]) =>
             ManifestField(
               name: 'data',
               type: ManifestType(name: 'T', isNullable: false),
+              defaultValueCode: null,
             ),
           ],
         ),
@@ -29,6 +30,7 @@ Manifest manifest2([ManifestEquality equality = ManifestEquality.data]) =>
             ManifestField(
               name: 'exception',
               type: ManifestType(name: 'Object', isNullable: false),
+              defaultValueCode: null,
             ),
           ],
         ),

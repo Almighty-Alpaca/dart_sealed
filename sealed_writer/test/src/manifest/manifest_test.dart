@@ -104,27 +104,30 @@ void main() {
   group('class ManifestField', () {
     test('initialization', () {
       final type = ManifestType(name: 'double', isNullable: true);
-      final a = ManifestField(name: 'angle', type: type);
+      final a =
+          ManifestField(name: 'angle', type: type, defaultValueCode: null);
       expect(a.name, 'angle');
       expect(a.type, type);
 
-      final b = ManifestField(name: 'angle', type: type);
+      final b =
+          ManifestField(name: 'angle', type: type, defaultValueCode: null);
       expect(b.name, 'angle');
       expect(b.type, type);
 
       expect(
-        () => ManifestField(name: '_angle', type: type),
+        () => ManifestField(name: '_angle', type: type, defaultValueCode: null),
         throwsInternal(),
       );
       expect(
-        () => ManifestField(name: 'Angle', type: type),
+        () => ManifestField(name: 'Angle', type: type, defaultValueCode: null),
         throwsInternal(),
       );
     });
 
     test('toString', () {
       final type = ManifestType(name: 'double', isNullable: true);
-      final a = ManifestField(name: 'angle', type: type);
+      final a =
+          ManifestField(name: 'angle', type: type, defaultValueCode: null);
       expect(
         a.toString(),
         equals('Field{name: angle, type: $type}'),
@@ -134,10 +137,14 @@ void main() {
     test('equality', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
       final type2 = ManifestType(name: 'double', isNullable: false);
-      final a = ManifestField(name: 'angle', type: type1);
-      final b = ManifestField(name: 'angle', type: type1);
-      final c = ManifestField(name: 'lollipop', type: type1);
-      final d = ManifestField(name: 'angle', type: type2);
+      final a =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final b =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final c =
+          ManifestField(name: 'lollipop', type: type1, defaultValueCode: null);
+      final d =
+          ManifestField(name: 'angle', type: type2, defaultValueCode: null);
 
       expect(a, equals(a));
       expect(a, equals(b));
@@ -148,10 +155,14 @@ void main() {
     test('hashCode', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
       final type2 = ManifestType(name: 'double', isNullable: false);
-      final a = ManifestField(name: 'angle', type: type1);
-      final b = ManifestField(name: 'angle', type: type1);
-      final c = ManifestField(name: 'lollipop', type: type1);
-      final d = ManifestField(name: 'angle', type: type2);
+      final a =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final b =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final c =
+          ManifestField(name: 'lollipop', type: type1, defaultValueCode: null);
+      final d =
+          ManifestField(name: 'angle', type: type2, defaultValueCode: null);
 
       expect(a.hashCode, equals(a.hashCode));
       expect(a.hashCode, equals(b.hashCode));
@@ -163,7 +174,8 @@ void main() {
   group('class ManifestItem', () {
     test('initialization', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
       final item1 = ManifestItem(
         shortName: 'windy',
         name: 'Lollipop',
@@ -226,7 +238,8 @@ void main() {
 
     test('toString', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
       final a = ManifestItem(
         shortName: 'windy',
         name: 'Lollipop',
@@ -244,7 +257,8 @@ void main() {
 
     test('equality', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
       final a = ManifestItem(
         shortName: 'windy',
         name: 'Lollipop',
@@ -278,7 +292,8 @@ void main() {
 
     test('hashCode', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
       final a = ManifestItem(
         shortName: 'windy',
         name: 'Lollipop',
@@ -379,7 +394,8 @@ void main() {
 
     test('toString', () {
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
       final item1 = ManifestItem(
         shortName: 'sunny',
         name: 'Lollipop',
@@ -450,8 +466,10 @@ void main() {
       );
 
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
-      final field2 = ManifestField(name: 'velocity', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final field2 =
+          ManifestField(name: 'velocity', type: type1, defaultValueCode: null);
       final item3 = ManifestItem(
         shortName: 'rainy',
         name: 'Lollipop',
@@ -556,8 +574,10 @@ void main() {
       );
 
       final type1 = ManifestType(name: 'double', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
-      final field2 = ManifestField(name: 'velocity', type: type1);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final field2 =
+          ManifestField(name: 'velocity', type: type1, defaultValueCode: null);
       final item3 = ManifestItem(
         shortName: 'rainy',
         name: 'Lollipop',
@@ -619,11 +639,16 @@ void main() {
       final type1 = ManifestType(name: 'num', isNullable: true);
       final type2 = ManifestType(name: 'double', isNullable: true);
       final type3 = ManifestType(name: 'Object', isNullable: true);
-      final field1 = ManifestField(name: 'angle', type: type1);
-      final field2 = ManifestField(name: 'angle', type: type1);
-      final field3 = ManifestField(name: 'angle', type: type2);
-      final field4 = ManifestField(name: 'velocity', type: type1);
-      final field5 = ManifestField(name: 'lollipop', type: type3);
+      final field1 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final field2 =
+          ManifestField(name: 'angle', type: type1, defaultValueCode: null);
+      final field3 =
+          ManifestField(name: 'angle', type: type2, defaultValueCode: null);
+      final field4 =
+          ManifestField(name: 'velocity', type: type1, defaultValueCode: null);
+      final field5 =
+          ManifestField(name: 'lollipop', type: type3, defaultValueCode: null);
 
       expect(
         () => Manifest(
@@ -951,6 +976,7 @@ void main() {
                     name: 'num',
                     isNullable: false,
                   ),
+                  defaultValueCode: null,
                 ),
                 ManifestField(
                   name: 'field2',
@@ -958,6 +984,7 @@ void main() {
                     name: 'int',
                     isNullable: false,
                   ),
+                  defaultValueCode: null,
                 ),
                 ManifestField(
                   name: 'field1',
@@ -965,6 +992,7 @@ void main() {
                     name: 'double',
                     isNullable: false,
                   ),
+                  defaultValueCode: null,
                 ),
               ],
             ),
@@ -1017,6 +1045,7 @@ void main() {
                     name: 'num',
                     isNullable: false,
                   ),
+                  defaultValueCode: null,
                 ),
               ],
             ),
@@ -1044,6 +1073,7 @@ void main() {
                     name: 'num',
                     isNullable: false,
                   ),
+                  defaultValueCode: null,
                 ),
               ],
             ),
@@ -1067,6 +1097,7 @@ void main() {
                   name: 'num',
                   isNullable: false,
                 ),
+                defaultValueCode: null,
               ),
             ],
           ),

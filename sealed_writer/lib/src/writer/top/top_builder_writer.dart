@@ -9,7 +9,7 @@ class TopBuilderWriter extends BaseUtilsWriter {
   /// ex. required double velocity
   /// ex. double? angle
   String topBuilderDecArg(ManifestField field) => [
-        if (!field.type.isNullable) '$req ',
+        if (!field.type.isNullable && field.defaultValueCode == null) '$req ',
         '${typeSL(field.type)} ${field.name}',
       ].joinParts();
 

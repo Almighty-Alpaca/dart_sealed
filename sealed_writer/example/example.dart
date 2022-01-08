@@ -21,6 +21,7 @@ void main() {
               name: 'int',
               isNullable: false,
             ),
+            defaultValueCode: null,
           ),
         ],
       ),

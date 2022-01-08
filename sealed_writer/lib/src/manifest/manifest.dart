@@ -113,6 +113,7 @@ class ManifestField {
   ManifestField({
     required this.name,
     required this.type,
+    required this.defaultValueCode,
   }) {
     check(name.isGenFieldName());
   }
@@ -122,6 +123,9 @@ class ManifestField {
 
   /// type.
   final ManifestType type;
+
+  /// default value code.
+  final String? defaultValueCode;
 
   @override
   String toString() => 'Field{name: $name, type: $type}';

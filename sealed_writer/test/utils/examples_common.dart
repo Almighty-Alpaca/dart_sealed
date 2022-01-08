@@ -14,6 +14,7 @@ Manifest manifest3() => Manifest(
                 name: 'num',
                 isNullable: false,
               ),
+              defaultValueCode: null,
             ),
           ],
         ),
@@ -28,6 +29,7 @@ Manifest manifest3() => Manifest(
                 name: 'int',
                 isNullable: false,
               ),
+              defaultValueCode: null,
             ),
             ManifestField(
               name: 'y',
@@ -35,6 +37,7 @@ Manifest manifest3() => Manifest(
                 name: 'String',
                 isNullable: false,
               ),
+              defaultValueCode: null,
             ),
           ],
         ),
@@ -47,6 +50,7 @@ Manifest manifest3() => Manifest(
             name: 'num',
             isNullable: false,
           ),
+          defaultValueCode: null,
         ),
       ],
     );

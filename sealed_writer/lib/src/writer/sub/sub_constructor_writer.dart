@@ -9,8 +9,9 @@ class SubConstructorWriter extends BaseUtilsWriter {
   /// ex. required this.velocity
   /// ex. required this.angle
   String subConstructorDecArg(ManifestField field) => [
-        if (!field.type.isNullable) '$req ',
+        if (!field.type.isNullable && field.defaultValueCode == null) '$req ',
         'this.${field.name}',
+        if (field.defaultValueCode != null) ' = ${field.defaultValueCode}'
       ].joinParts();
 
   /// ex. ({required this.velocity,})

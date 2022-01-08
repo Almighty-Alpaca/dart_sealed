@@ -18,6 +18,7 @@ Manifest manifest1([ManifestEquality equality = ManifestEquality.data]) =>
             ManifestField(
               name: 'rain',
               type: ManifestType(name: 'int', isNullable: false),
+              defaultValueCode: null,
             ),
           ],
         ),
@@ -29,10 +30,12 @@ Manifest manifest1([ManifestEquality equality = ManifestEquality.data]) =>
             ManifestField(
               name: 'velocity',
               type: ManifestType(name: 'double', isNullable: false),
+              defaultValueCode: null,
             ),
             ManifestField(
               name: 'angle',
               type: ManifestType(name: 'double', isNullable: true),
+              defaultValueCode: null,
             )
           ],
         ),
