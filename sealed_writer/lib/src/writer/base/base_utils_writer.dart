@@ -31,6 +31,12 @@ abstract class BaseUtilsWriter extends BaseWriter {
   /// lower start short sub class name, ex. sunny
   String subLower(ManifestItem item) => item.shortName;
 
+  String subLowerPub(ManifestItem item) {
+    final s = subLower(item);
+
+    return s.startsWith('_') ? s.substring(1) : s;
+  }
+
   /// ex. double, double?
   String typeSL(ManifestType type) =>
       type.isNullable ? '${type.name}$n' : type.name;

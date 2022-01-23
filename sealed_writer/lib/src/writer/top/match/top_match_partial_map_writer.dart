@@ -13,8 +13,8 @@ class TopMatchPartialMapWriter extends TopMatchBaseWriter {
         code: Branch(
           ifs: [
             If(
-              condition: '${subLower(item)} != null',
-              code: '${subLower(item)}${topMatchItemCallArgs()};',
+              condition: '${subLowerPub(item)} != null',
+              code: '${subLowerPub(item)}${topMatchItemCallArgs()};',
             ),
             If(
               condition: 'orElse != null',

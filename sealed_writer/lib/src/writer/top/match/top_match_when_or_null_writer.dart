@@ -11,8 +11,8 @@ class TopMatchWhenOrNullWriter extends TopMatchBaseWriter {
   If topMatchWhenOrNullIf(ManifestItem item) => If(
         condition: '$topLower ${isSub(item)}',
         code: [
-          'return ${subLower(item)} != null ?',
-          ' ${subLower(item)}',
+          'return ${subLowerPub(item)} != null ?',
+          ' ${subLowerPub(item)}',
           topMatchWrappedItemCallArgs(item),
           ' : orElse?.call',
           topMatchItemCallArgs(),

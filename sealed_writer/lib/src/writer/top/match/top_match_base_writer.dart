@@ -12,7 +12,7 @@ class TopMatchBaseWriter extends BaseCastUtilsWriter {
 
   /// required (R Function(WeatherSunny sunny)) sunny
   String topMatchGenericNNArg(ManifestItem item) => '$req R Function'
-      '(${subCall(item)} ${subLower(item)}) ${subLower(item)}';
+      '(${subCall(item)} ${subLowerPub(item)}) ${subLowerPub(item)}';
 
   /// required R Function(Weather weather) orElse
   String topMatchGenericNNArgOrElse() => '$req R Function'
@@ -27,11 +27,11 @@ class TopMatchBaseWriter extends BaseCastUtilsWriter {
 
   /// R Function(WeatherSunny sunny)? sunny
   String topMatchGenericNArg(ManifestItem item) => 'R Function'
-      '(${subCall(item)} ${subLower(item)})$n ${subLower(item)}';
+      '(${subCall(item)} ${subLowerPub(item)})$n ${subLowerPub(item)}';
 
   /// required void Function(WeatherSunny sunny) sunny
   String topMatchVoidNNArg(ManifestItem item) => '$req void Function'
-      '(${subCall(item)} ${subLower(item)}) ${subLower(item)}';
+      '(${subCall(item)} ${subLowerPub(item)}) ${subLowerPub(item)}';
 
   /// required void Function(Weather weather) orElse
   String topMatchVoidNNArgOrElse() => '$req void Function'
@@ -43,7 +43,7 @@ class TopMatchBaseWriter extends BaseCastUtilsWriter {
 
   /// void Function(WeatherSunny sunny)? sunny
   String topMatchVoidNArg(ManifestItem item) => 'void Function'
-      '(${subCall(item)} ${subLower(item)})$n ${subLower(item)}';
+      '(${subCall(item)} ${subLowerPub(item)})$n ${subLowerPub(item)}';
 
   /// ex. throw AssertionError();
   String throwAssertion() => 'throw AssertionError();';
@@ -67,28 +67,28 @@ class TopMatchBaseWriter extends BaseCastUtilsWriter {
   String topMatchWrappedGenericNNArg(ManifestItem item) => [
         '$req R Function',
         topMatchWrappedItemArgs(item),
-        ' ${subLower(item)}',
+        ' ${subLowerPub(item)}',
       ].joinParts();
 
   /// R Function(double velocity, double? angle)? sunny
   String topMatchWrappedGenericNArg(ManifestItem item) => [
         'R Function',
         topMatchWrappedItemArgs(item),
-        '$n ${subLower(item)}',
+        '$n ${subLowerPub(item)}',
       ].joinParts();
 
   /// required void Function(double velocity, double? angle) sunny
   String topMatchWrappedVoidNNArg(ManifestItem item) => [
         '$req void Function',
         topMatchWrappedItemArgs(item),
-        ' ${subLower(item)}',
+        ' ${subLowerPub(item)}',
       ].joinParts();
 
   /// void Function(double velocity, double? angle)? sunny
   String topMatchWrappedVoidNArg(ManifestItem item) => [
         'void Function',
         topMatchWrappedItemArgs(item),
-        '$n ${subLower(item)}',
+        '$n ${subLowerPub(item)}',
       ].joinParts();
 
   /// ex. weather.angle

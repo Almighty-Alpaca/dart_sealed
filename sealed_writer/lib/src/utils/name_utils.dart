@@ -7,8 +7,15 @@ extension NameUtils on String {
   /// should not start with "_".
   bool startsWithUpper() {
     check(isNotEmpty && trim() == this && !contains(' '));
-    final first = substring(0, 1);
-    check(first != '_');
+
+    String first;
+    if (startsWith('_')) {
+      check(length >= 2);
+      first = substring(0, 2);
+    } else {
+      first = substring(0, 1);
+    }
+
     final upperFirst = first.toUpperCase();
     return first == upperFirst;
   }
@@ -16,31 +23,58 @@ extension NameUtils on String {
   /// should not start with "_".
   bool startsWithLower() {
     check(isNotEmpty && trim() == this && !contains(' '));
-    final first = substring(0, 1);
-    check(first != '_');
+
+    String first;
+    if (startsWith('_')) {
+      check(length >= 2);
+      first = substring(0, 2);
+    } else {
+      first = substring(0, 1);
+    }
+
     final lowerFirst = first.toLowerCase();
     return first == lowerFirst;
   }
 
-  /// should not start with "_".
   String toUpperStart() {
     check(isNotEmpty && trim() == this && !contains(' '));
-    final first = substring(0, 1);
-    check(first != '_');
-    final upperFirst = first.toUpperCase();
-    check(upperFirst != first);
-    final second = substring(1);
-    return upperFirst + second;
+
+    String prefix, first, rest;
+    if (startsWith('_')) {
+      check(length >= 2);
+      prefix = '_';
+      first = substring(0, 2);
+      rest = substring(2);
+    } else {
+      prefix = '';
+      first = substring(0, 1);
+      rest = substring(1);
+    }
+
+    final firstUpper = first.toUpperCase();
+    check(firstUpper != first);
+
+    return prefix + firstUpper + rest;
   }
 
-  /// should not start with "_".
   String toLowerStart() {
     check(isNotEmpty && trim() == this && !contains(' '));
-    final first = substring(0, 1);
-    check(first != '_');
+
+    String prefix, first, rest;
+    if (startsWith('_')) {
+      check(length >= 2);
+      prefix = '_';
+      first = substring(0, 2);
+      rest = substring(2);
+    } else {
+      prefix = '';
+      first = substring(0, 1);
+      rest = substring(1);
+    }
+
     final lowerFirst = first.toLowerCase();
     check(lowerFirst != first);
-    final second = substring(1);
-    return lowerFirst + second;
+
+    return prefix + lowerFirst + rest;
   }
 }

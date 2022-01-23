@@ -70,10 +70,6 @@ class ManifestReader {
       () => "method name '$name' should be a valid type name",
     );
     require(
-      method.isPublic && name.isPublic(),
-      () => "method name '$name' should be pubic",
-    );
-    require(
       name.startsWithLower(),
       () => "method name '$name' should start with lower case letter",
     );
@@ -136,8 +132,13 @@ class ManifestReader {
 
   /// default full name of a sub class,
   /// like WeatherRainy.
-  String _defaultFullName(String shortName) =>
-      '$topPrefix${shortName.toUpperStart()}';
+  String _defaultFullName(String shortName) {
+    if (shortName.startsWith('_')) {
+      return '_$topPrefix${shortName.substring(1).toUpperStart()}';
+    } else {
+      return '$topPrefix${shortName.toUpperStart()}';
+    }
+  }
 
   /// extract items from class element
   List<ManifestItem> _extractItems() {

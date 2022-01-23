@@ -31,7 +31,6 @@ extension TypeUtils on String {
   /// is public.
   bool isGenFieldName() {
     if (!isGenTypeName()) return false;
-    if (!isPublic()) return false;
     if (!startsWithLower()) return false;
     return true;
   }
@@ -41,7 +40,6 @@ extension TypeUtils on String {
   /// is public.
   bool isGenClassName() {
     if (!isGenTypeName()) return false;
-    if (!isPublic()) return false;
     if (!startsWithUpper()) return false;
     return true;
   }

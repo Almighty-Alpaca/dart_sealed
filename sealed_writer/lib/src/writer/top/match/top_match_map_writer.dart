@@ -11,7 +11,7 @@ class TopMatchMapWriter extends TopMatchBaseWriter {
   If topMatchMapIf(ManifestItem item) => If(
         condition: '$topLower ${isSub(item)}',
         code: [
-          'return ${subLower(item)}',
+          'return ${subLowerPub(item)}',
           topMatchItemCallArgs(),
           ';',
         ].joinParts(),
