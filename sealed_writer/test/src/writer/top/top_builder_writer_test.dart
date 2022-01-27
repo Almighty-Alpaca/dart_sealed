@@ -248,16 +248,16 @@ void main() {
           final writer = TopBuilderWriter(manifest);
 
           expect(
-            writer.topFactoryBuilder(item1),
+            writer.topFactoryBuilder(item1, false),
             'const factory Weather.sunny() = HiSunny;',
           );
           expect(
-            writer.topFactoryBuilder(item2),
+            writer.topFactoryBuilder(item2, false),
             'const factory Weather.rainy({required int rain,}) ='
             ' WeatherRainy;',
           );
           expect(
-            writer.topFactoryBuilder(item3),
+            writer.topFactoryBuilder(item3, false),
             'const factory Weather.windy'
             '({required double velocity, double? angle,})'
             ' = HelloWindy;',
@@ -272,7 +272,7 @@ void main() {
           final writer = TopBuilderWriter(manifest);
 
           expect(
-            writer.topFactoryBuilder(item1),
+            writer.topFactoryBuilder(item1, true),
             'const factory Result.success({required T data,})'
             ' = MySuccess<T>;',
           );

@@ -60,15 +60,14 @@ class TopBuilderWriter extends BaseUtilsWriter {
   /// ex. static const Weather sunny = WeatherSunny();
   ///
   /// ex. factory Result.success(...) = ResultSuccess<T>;
-  String topFactoryBuilder(ManifestItem item) => [
-        if (item.fields.isNotEmpty) ...<String>[
+  String topFactoryBuilder(ManifestItem item, bool hasClassParams) => [
+        if (item.fields.isNotEmpty || hasClassParams) ...<String>[
           'const factory $top.${subLower(item)}',
           topBuilderDecArgs(item),
           ' = ',
           subCall(item),
           ';',
-        ],
-        if (item.fields.isEmpty) ...<String>[
+        ] else ...<String>[
           'static const $top ${subLower(item)}',
           ' = ',
           subCall(item),
@@ -77,5 +76,6 @@ class TopBuilderWriter extends BaseUtilsWriter {
       ].joinParts();
 
   /// top builder methods
-  Iterable<String> topBuilderMethods() => manifest.items.map(topFactoryBuilder);
+  Iterable<String> topBuilderMethods() => manifest.items
+      .map((item) => topFactoryBuilder(item, manifest.params.isNotEmpty));
 }
