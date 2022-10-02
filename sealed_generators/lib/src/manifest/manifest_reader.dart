@@ -153,7 +153,7 @@ class ManifestReader {
   /// type name without any nullability sign
   String _extractTypeName(DartType type) {
     final typeName = type.getDisplayString(withNullability: false);
-    final reference = type.element;
+    final reference = type.element2;
     if (reference != null && isAnnotatedBySealed(reference)) {
       // type itself is a sealed manifest class
       require(

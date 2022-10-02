@@ -2,7 +2,7 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:sealed_generators/src/manifest/annotation_utils.dart';
 import 'package:sealed_generators/src/manifest/manifest_reader.dart';
 import 'package:sealed_writer/sealed_writer.dart';
-import 'package:source_gen/src/constants/reader.dart';
+import 'package:source_gen/source_gen.dart';
 
 /// provides options and details not general to the manifest to reader
 class ManifestReaderBuilder {
@@ -40,7 +40,7 @@ class ManifestReaderBuilder {
     );
     final cls = e as ClassElement;
     require(
-      !cls.isEnum && !cls.isMixin && !cls.isMixinApplication,
+      cls is! EnumElement && cls is! MixinElement && !cls.isMixinApplication,
       'element should be a Class',
     );
     require(
@@ -70,6 +70,6 @@ class ManifestReaderBuilder {
   }
 
   String? _extractBlocName(ConstantReader annotation) {
-    return annotation.peek('bloc')?.typeValue.element?.name;
+    return annotation.peek('bloc')?.typeValue.element2?.name;
   }
 }
